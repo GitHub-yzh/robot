@@ -7,5 +7,5 @@ package com.robot.yzh.common.api;
 public interface IErrorCode {
     long getCode();
 
-    String getMessage();
+    String getMsg();
 }

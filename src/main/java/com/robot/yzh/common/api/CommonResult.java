@@ -6,15 +6,15 @@ package com.robot.yzh.common.api;
  */
 public class CommonResult<T> {
     private long code;
-    private String message;
+    private String msg;
     private T data;
 
     protected CommonResult() {
     }
 
-    protected CommonResult(long code, String message, T data) {
+    protected CommonResult(long code, String msg, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 
@@ -24,17 +24,17 @@ public class CommonResult<T> {
      * @param data 获取的数据
      */
     public static <T> CommonResult<T> success(T data) {
-        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), data);
     }
 
     /**
      * 成功返回结果
      *
      * @param data 获取的数据
-     * @param  message 提示信息
+     * @param  msg 提示信息
      */
-    public static <T> CommonResult<T> success(T data, String message) {
-        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), message, data);
+    public static <T> CommonResult<T> success(T data, String msg) {
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(), msg, data);
     }
 
     /**
@@ -42,15 +42,15 @@ public class CommonResult<T> {
      * @param errorCode 错误码
      */
     public static <T> CommonResult<T> failed(IErrorCode errorCode) {
-        return new CommonResult<T>(errorCode.getCode(), errorCode.getMessage(), null);
+        return new CommonResult<T>(errorCode.getCode(), errorCode.getMsg(), null);
     }
 
     /**
      * 失败返回结果
-     * @param message 提示信息
+     * @param msg 提示信息
      */
-    public static <T> CommonResult<T> failed(String message) {
-        return new CommonResult<T>(ResultCode.FAILED.getCode(), message, null);
+    public static <T> CommonResult<T> failed(String msg) {
+        return new CommonResult<T>(ResultCode.FAILED.getCode(), msg, null);
     }
 
     /**
@@ -69,24 +69,24 @@ public class CommonResult<T> {
 
     /**
      * 参数验证失败返回结果
-     * @param message 提示信息
+     * @param msg 提示信息
      */
-    public static <T> CommonResult<T> validateFailed(String message) {
-        return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(), message, null);
+    public static <T> CommonResult<T> validateFailed(String msg) {
+        return new CommonResult<T>(ResultCode.VALIDATE_FAILED.getCode(), msg, null);
     }
 
     /**
      * 未登录返回结果
      */
     public static <T> CommonResult<T> unauthorized(T data) {
-        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), data);
+        return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMsg(), data);
     }
 
     /**
      * 未授权返回结果
      */
     public static <T> CommonResult<T> forbidden(T data) {
-        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), data);
+        return new CommonResult<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMsg(), data);
     }
 
     public long getCode() {
@@ -97,12 +97,12 @@ public class CommonResult<T> {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
